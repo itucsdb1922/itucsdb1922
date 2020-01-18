@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Developer Guide &mdash; ITUCSDB1922  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parts Implemented by Batuhan Faik Derinbay" href="Batuhan Faik Derinbay.html" />
+    <link rel="prev" title="Parts Implemented by Cihat Akkiraz" href="../user/Cihat Akkiraz.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ITUCSDB1922
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#database-design">Database Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#e-r-diagrams-of-databees">E/R Diagrams of DataBees</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#code">Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html">Parts Implemented by Batuhan Faik Derinbay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html">Parts Implemented by Fatih Altınpınar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Zeynep Yetistiren.html">Parts Implemented by Zeynep Yetiştiren</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cihat Akkiraz.html">Parts Implemented by Cihat Akkiraz</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ITUCSDB1922</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Developer Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developer/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="developer-guide">
+<h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="database-design">
+<h2>Database Design<a class="headerlink" href="#database-design" title="Permalink to this headline">¶</a></h2>
+<p>Our database is in 1NF since some of our team members decided to use <cite>TR ID</cite> as a primary
+key for their relations while others preferred an serial integer.</p>
+<p>Also there is a table named <cite>syllabus</cite> which has the same primary key <cite>course</cite> does. This <cite>file</cite> attribute
+in <cite>syllabus</cite> table is separated for practical reasons. Since multiple querries occur on the course table that
+does not use syllabus pdf, downloading the pdf file would have decrease system speed.</p>
+<div class="section" id="e-r-diagrams-of-databees">
+<h3>E/R Diagrams of DataBees<a class="headerlink" href="#e-r-diagrams-of-databees" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center">
+<img alt="ERD of Derinbay" src="../_images/databees_erd_derinbay.png" />
+</div>
+<div class="figure align-center">
+<img alt="ERD of Altınpınar" src="../_images/faati_erd.png" />
+</div>
+<div class="figure align-center">
+<img alt="ERD of Yetistiren" src="../_images/zeynepyetistiren_ERD.png" />
+</div>
+<div class="figure align-center">
+<img alt="ERD of Akkiraz" src="../_images/cihat_erd.png" />
+</div>
+</div>
+</div>
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<p>ITU DataBees integrates the <strong>model-view-controller</strong> design.</p>
+<ul class="simple">
+<li><p><strong>Web Framework:</strong> Flask</p></li>
+<li><p><strong>Database:</strong> PostgreSQL</p></li>
+<li><p><strong>Written in:</strong> Python</p></li>
+</ul>
+<div class="figure align-center" id="id1">
+<img alt="Model-View-Controller" src="../_images/mvc.png" />
+<p class="caption"><span class="caption-text">Model-View-Controller</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>ITU DataBees is structed as follows:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">server.py</span></code> creates a flask app, handles the incoming requests and routes them.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">views.py</span></code> renders the templates.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">database.py</span></code> handles the requests between the database and the web application.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">settings.py</span></code> has the settings for the flask web application.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dbinit.py</span></code> initializes the DataBees.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">forms.py</span></code> handles the forms controlled by flask forms.</p></li>
+<li><p>Various class named files includes corresponding python classes and related functions.</p></li>
+<li><p>Templates folder contains the HTML files of the websites</p></li>
+<li><p>Static folders contains the images, style sheets and scripts used during the development of the DataBees.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Batuhan Faik Derinbay.html">Parts Implemented by Batuhan Faik Derinbay</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Batuhan Faik Derinbay.html#tables">Tables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#inserting-data">Inserting Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#re-initialization-of-databees">Re-Initialization of DataBees</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Batuhan Faik Derinbay.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#person">Person</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#assistant">Assistant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#student">Student</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Batuhan Faik Derinbay.html#view-models">View Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#people">People</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#id1">Assistant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#id2">Student</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#others">Others</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Batuhan Faik Derinbay.html#database-queries">Database Queries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#id3">Person</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#id4">Assistant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Batuhan Faik Derinbay.html#id5">Student</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Batuhan Faik Derinbay.html#templates">Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fatih.html">Parts Implemented by Fatih Altınpınar</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fatih.html#tables">Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fatih.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#course">Course</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#instructor">Instructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#classroom">Classroom</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fatih.html#view-models">View Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#id1">Classroom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#id2">Course</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#syllabus">Syllabus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#id3">Instructor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fatih.html#database-queries">Database Queries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#id4">Course</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#id5">Syllabus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#id6">Classroom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#id7">Instructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fatih.html#taken-course">Taken Course</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fatih.html#templates">Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Zeynep Yetistiren.html">Parts Implemented by Zeynep Yetiştiren</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Zeynep Yetistiren.html#tables">Tables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Zeynep Yetistiren.html#example-data">Example Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Zeynep Yetistiren.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Zeynep Yetistiren.html#staff">Staff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Zeynep Yetistiren.html#facility">Facility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Zeynep Yetistiren.html#staff-facil">Staff_facil</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Zeynep Yetistiren.html#view-models">View Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Zeynep Yetistiren.html#id1">Staff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Zeynep Yetistiren.html#staff-facility">Staff-Facility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Zeynep Yetistiren.html#id2">Facility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Zeynep Yetistiren.html#database-queries">Database Queries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Zeynep Yetistiren.html#id3">Staff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Zeynep Yetistiren.html#id4">Facility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Zeynep Yetistiren.html#id5">Staff-Facility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Zeynep Yetistiren.html#templates">Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Cihat Akkiraz.html">Parts Implemented by Cihat Akkiraz</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Cihat Akkiraz.html#campus">Campus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cihat Akkiraz.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Cihat Akkiraz.html#id1">Campus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cihat Akkiraz.html#faculty">Faculty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cihat Akkiraz.html#department">Department</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Cihat Akkiraz.html#view-models">View Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Cihat Akkiraz.html#id2">Campus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cihat Akkiraz.html#id3">Faculty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cihat Akkiraz.html#id4">Department</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Cihat Akkiraz.html#database-queries">Database Queries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Cihat Akkiraz.html#id5">Campus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cihat Akkiraz.html#id6">Faculty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cihat Akkiraz.html#id7">Department</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Cihat Akkiraz.html#templates">Templates</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Batuhan Faik Derinbay.html" class="btn btn-neutral float-right" title="Parts Implemented by Batuhan Faik Derinbay" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../user/Cihat Akkiraz.html" class="btn btn-neutral float-left" title="Parts Implemented by Cihat Akkiraz" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ITUCSDB1922
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
